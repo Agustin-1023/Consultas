@@ -31,55 +31,43 @@ namespace Consultador
         private void button1_Click(object sender, EventArgs e)
         {
             //-----------------------CONSULTA DATOS DE CLIENTES-----------------------
-            if (dni.Text == "") {
-                yDNI = "";
+            select_consulta.Text = String.Empty;
+            if (dni.Text == String.Empty) {
+                yDNI = String.Empty;
             }
-            if (pam.Text == "")
+            if (pam.Text == String.Empty)
             {
-                yPAM = "";
+                yPAM = String.Empty;
             }
-            if (name.Text != "") { 
-                select_consulta.Text = inicio + where + yName + name.Text + yApellido + lastName.Text + yDNI + dni.Text + yPAM + pam.Text + "];";
+            if (!String.isNullOrEmpty(name.Text)) { 
+                select_consulta.Text = inicio + where + yName + name.Text + yApellido + lastName.Text + (String.isNullOrEmpty(dni.Text) == String.Empty ? String.Empty : yDNI) + dni.Text + (String.isNullOrEmpty(pam.Text) == String.Empty ? String.Empty : yPAM) + pam.Text + "];";
                 TextWriter Escribe = new StreamWriter("Consulta " + dni.Text + name.Text);
                 Escribe.WriteLine(select_consulta.Text);
                 Escribe.Close();
                 ruta_origen = ruta_origen + "consulta cliente " + name.Text + " " + lastName.Text + ".txt";
                 ruta_destino = ruta_destino + "consulta cliente " + name.Text + " " + lastName.Text + ".txt";
-                yApellido = "] && Apellido [";
-                yPAM = "] && PAM [";
-                yDNI = "] && DNI [";
+              
                 //File.Move(ruta_origen, ruta_destino);
 
                 if (lastName.Text != "")
                 {
-                    select_consulta.Text = inicio + where + yName + name.Text + yApellido + lastName.Text + yDNI + dni.Text + yPAM + pam.Text + "];";
+                    select_consulta.Text = inicio + where + yName + name.Text + yApellido + lastName.Text + (String.isNullOrEmpty(dni.Text) ? String.Empty : yDNI) + dni.Text + (String.isNullOrEmpty(pam.Text) ? String.Empty : yPAM) + pam.Text + "];";
                     Escribe = new StreamWriter("Consulta " + dni.Text + name.Text);
                     Escribe.WriteLine(select_consulta.Text);
                     Escribe.Close();
                     ruta_origen = ruta_origen + "consulta cliente " + name.Text + " " + lastName.Text + ".txt";
                     ruta_destino = ruta_destino + "consulta cliente " + name.Text + " " + lastName.Text + ".txt";
-                    yApellido = "] && Apellido [";
-                    yPAM = "] && PAM [";
-                    yDNI = "] && DNI [";
                     //File.Move(ruta_origen, ruta_destino);
                 }
                 else
                 {
-                    select_consulta.Text = "";
                     MessageBox.Show("EL CAMPO APELLIDO NO PUEDE ESTAR EN BLANCO");
-                    yApellido = "] && Apellido [";
-                    yPAM = "] && PAM [";
-                    yDNI = "] && DNI [";
                 }
 
             }
             else
             {
-                select_consulta.Text = "";
                 MessageBox.Show("EL CAMPO NOMBRE NO PUEDE ESTAR EN BLANCO");
-                yApellido = "] && Apellido [";
-                yPAM = "] && PAM [";
-                yDNI = "] && DNI [";
             }
         }
 
@@ -136,18 +124,12 @@ namespace Consultador
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            if(rad_cred.Checked == true)
-            {
-                rad_deb.Checked = false;
-            }
+            rad_deb.Checked = rad_cred.Checked ? false : true;
         }
 
         private void rad_deb_CheckedChanged(object sender, EventArgs e)
         {
-            if(rad_deb.Checked == true)
-            {
-                rad_cred.Checked = false;
-            }
+            rad_cred.Checked = rad_deb.Checked ? false : true;
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
