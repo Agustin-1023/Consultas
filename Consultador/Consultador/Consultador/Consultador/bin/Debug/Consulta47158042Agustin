@@ -1,0 +1,1 @@
+SELECT * FROM ***Nombre de la base de datos*** Where  Nombre = [Agustin] && Apellido [Sosa] && DNI [47158042] && PAM [1234567891234567];

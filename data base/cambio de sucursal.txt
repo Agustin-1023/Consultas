@@ -1,0 +1,3 @@
+update [SPEC_proceso].[dbo].[ims_usuario]
+set punto_emision_id=(id punto emisio)
+where id=(id usurio)
