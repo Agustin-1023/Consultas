@@ -1,0 +1,1 @@
+SELECTO * FROM ***Nombre de la base de datos*** WHERE A  B 123 999999;

@@ -1,0 +1,1 @@
+UPDATE Nombre de la tabla SET Nombre de la columna de la sucursale nueva = '89' WHERE Nombre = AGU && Apellido = 'SO' && sucursal = 3;

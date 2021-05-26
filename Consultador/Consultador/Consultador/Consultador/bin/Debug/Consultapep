@@ -1,0 +1,1 @@
+SELECTO * FROM ***Nombre de la base de datos*** Where  Nombre = pep && Apellido grillo && PAM 1234127986;

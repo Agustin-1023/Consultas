@@ -1,0 +1,1 @@
+SELECTO * FROM ***Nombre de la base de datos*** Where  Nombre = agustin && Apellido sosa && DNI  123 && PAM 3262763757;
